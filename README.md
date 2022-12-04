@@ -1,6 +1,6 @@
 # Interactive Object Segmentation in 3D Point Clouds
 
-ETH Zurich
+
 
 <div align="center">
 <a href="https://theodorakontogianni.github.io/">Theodora Kontogianni</a>, <a href="https://www.gfz-potsdam.de/staff/ekin.celikkan/sec14">Ekin Celikkan</a>, <a href="https://vlg.inf.ethz.ch/team/Prof-Dr-Siyu-Tang.html">Siyu Tang</a>, <a href="https://igp.ethz.ch/personen/person-detail.html?persid=143986">Konrad Schindler</a>
