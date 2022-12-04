@@ -20,10 +20,11 @@ This repository provides code, data and pretrained models for:
 *** Code coming soon! ***
 
 ### Citation
-
+```
 @article{kontogianni2022interObj3d,  
   author = {Kontogianni, Theodora and Celikkan, Ekin and Tang, Siyu and Schindler, Konrad},
   title = {{Interactive Object Segmentation in 3D Point Clouds}},
   journal = {arXiv},
   year = {2022},
   }
+```
