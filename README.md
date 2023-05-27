@@ -32,8 +32,8 @@ https://omnomnom.vision.rwth-aachen.de/data/3d_inter_obj_seg/scannet_official/we
 
 ### Installation
 
-Preferably install a python virtual env (conda) using the requirements file in the repository or use it as a guideline since thME engine need s to be installed seperately.
-The code is based on the [Minkowski Engine](https://github.com/NVIDIA/MinkowskiEngine), [documentation page](https://nvidia.github.io/MinkowskiEngine/overview.html#installation) contains useful instructions on how to install the Minkowski engine.
+Preferably install a python virtual env (conda) using the requirements file in the repository or use it as a guideline since the ME engine needs to be installed seperately.
+The code is based on the [Minkowski Engine](https://github.com/NVIDIA/MinkowskiEngine), and [documentation page](https://nvidia.github.io/MinkowskiEngine/overview.html#installation) contains useful instructions on how to install the Minkowski engine.
 
 
 
@@ -78,8 +78,8 @@ The above copyright notice and this permission notice shall be included in all c
 @article{kontogianni2022interObj3d,  
   author = {Kontogianni, Theodora and Celikkan, Ekin and Tang, Siyu and Schindler, Konrad},
   title = {{Interactive Object Segmentation in 3D Point Clouds}},
-  journal = {arXiv},
-  year = {2022},
+  journal = {ICRA},
+  year = {2023},
   }
 ```
 
