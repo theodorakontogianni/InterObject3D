@@ -33,17 +33,21 @@ https://omnomnom.vision.rwth-aachen.de/data/3d_inter_obj_seg/scannet_official/we
 ### Installation
 
 Preferably install a python virtual env (conda) using the requirements file in the repository or use it as a guideline since the ME engine needs to be installed seperately.
-The code is based on the [Minkowski Engine](https://github.com/NVIDIA/MinkowskiEngine), and [documentation page](https://nvidia.github.io/MinkowskiEngine/overview.html#installation) contains useful instructions on how to install the Minkowski engine.
+The code is based on the [Minkowski Engine](https://github.com/NVIDIA/MinkowskiEngine), and the [documentation page](https://nvidia.github.io/MinkowskiEngine/overview.html#installation) contains useful instructions on how to install the Minkowski Engine.
 
 
 
 
 ### Run pre-trained model
+
+Run for a single instance:
 ```
 python run_inter3d.py --verbal=True --instance_counter_id=1 --number_of_instances=1 --cubeedge=0.05 --pretraining_weights='/media/kontogianni/Samsung_T5/intobjseg/datasets/scannet_official/weights/exp_14_limited_classes/weights_exp14_14.pth' --dataset='scannet'  --visual=True --save_results_file=True --results_file_name=results_scannet_mini.txt
 ```
-
-
+Run for all 5 instances in the toy dataset:
+```
+python run_inter3d.py --verbal=True --instance_counter_id=0 --number_of_instances=5 --cubeedge=0.05 --pretraining_weights='/media/kontogianni/Samsung_T5/intobjseg/datasets/scannet_official/weights/exp_14_limited_classes/weights_exp14_14.pth' --dataset='scannet'  --visual=True --save_results_file=True --results_file_name=results_scannet_mini.txt
+```
 
 ## License
 Copyright (c) 2021 Theodora Kontogianni, ETH Zurich
@@ -86,6 +90,6 @@ The above copyright notice and this permission notice shall be included in all c
 ## Aknowledgements
 We would like to thank the authors of ME for providing their codebase.
 
-* [ME](https://github.com/NVIDIA/MinkowskiEngine)
+* [MinkowskiEngine](https://github.com/NVIDIA/MinkowskiEngine)
 
 
