@@ -22,8 +22,7 @@ Inference code with pre-trained model is available - training code is coming soo
 
 ### Toy Data
 
-Toy dataset can be found on: 
-/home/kontogianni/Projects/ICRA23_InterObject3D/InterObject3D/Minkowski/training/mini_dataset/
+Toy dataset can be found on: /InterObject3D/Minkowski/training/mini_dataset/
 
 ### Citation
 ```
