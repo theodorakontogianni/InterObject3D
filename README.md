@@ -49,6 +49,24 @@ Run for all 5 instances in the toy dataset:
 python run_inter3d.py --verbal=True --instance_counter_id=0 --number_of_instances=5 --cubeedge=0.05 --pretraining_weights='/media/kontogianni/Samsung_T5/intobjseg/datasets/scannet_official/weights/exp_14_limited_classes/weights_exp14_14.pth' --dataset='scannet'  --visual=True --save_results_file=True --results_file_name=results_scannet_mini.txt
 ```
 
+### Evaluate pre-trained model 
+
+#### ScanNet-val
+
+Results from our evaluation on ScanNet-val are in the InterObject3D/Minkowski/training/results folder. 
+If you run the evaluation script please follow a similar format for the results. Then:
+
+Go to the following directory
+
+```
+cd InterObject3D/Minkowski/training/
+```
+If needed adjust the results paths and run:
+
+```
+python evaluation/compute_noc.py
+```
+
 ## License
 Copyright (c) 2021 Theodora Kontogianni, ETH Zurich
 
