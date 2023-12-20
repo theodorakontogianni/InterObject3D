@@ -88,7 +88,7 @@ def load_results(results_file, label=None, MAX_IOU=90, dataset=None, dataset_cla
 if __name__ == '__main__':
 
 
-    datasets = ['scannet'] #'s3dis','semKITTI'
+    datasets = ['s3dis'] # 'scannet' 's3dis','semKITTI'
 
 
     if 'scannet' in datasets:
@@ -129,6 +129,8 @@ if __name__ == '__main__':
             dtype=str)
 
         print('scannet')
+
+    
         for iou_max in [80, 85, 90]:
             print('\t All classes')
 
@@ -145,4 +147,37 @@ if __name__ == '__main__':
 
             # print('Class Bed')
             # _, clicks_scannet, iou_scannet = load_results(path + base_005_005, 'bed', iou_max, dataset_scannet,
-            #                                                dataset_classes_scannet, None)
+        #                                                dataset_classes_scannet, None)
+
+
+    elif "s3dis" in datasets:
+        label_s3dis = [ None, 'ceiling',
+                  'floor',
+                  'wall',
+                  'beam',
+                  'column',
+                  'window',
+                  'door',
+                  'table',
+                  'chair',
+                  'sofa',
+                  'bookcase',
+                  'board',
+                  'clutter']
+
+
+
+        base_005_005 = 's3dis_baseline_all2_005_0_14.csv'
+        path = "./results/s3dis_area5/"
+
+        dataset_s3dis = np.load('./results/s3dis_area5/dataset_area5.npy')
+        dataset_classes_s3dis = np.loadtxt(
+            './results/s3dis_area5/dataset_area5_classes.txt', dtype=str)
+
+        print('s3dis')
+
+    for iou_max in [80, 85, 90]:
+
+            load_results(path + base_005_005, None, iou_max, dataset_s3dis, dataset_classes_s3dis,None)
+
+
