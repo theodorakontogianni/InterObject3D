@@ -3,15 +3,16 @@ import numpy as np
 
 
 def load_results(results_file, label=None, MAX_IOU=90, dataset=None, dataset_classes=None,
-                 exclude_classes=['wall', 'ceiling', 'floor', 'unlabelled', 'unlabeled']):
+                 exclude_classes=['wall', 'ceiling', 'floor', 'unlabelled', 'unlabeled'], dataset_name="scannet"):
     objects = {}
-
+    
     def process_objects(data):
         nonlocal objects
         for entry in data:
             objects[entry[0].replace('scene', '') + '_' + entry[1]] = 1
 
     def filter_objects_by_classes(dataset_, dataset_classes, exclude_classes):
+        
         mask = np.isin(dataset_classes, exclude_classes, invert=True)
         print('total number of objects: ', np.shape(dataset_classes))
         print('number of objects kept: ', sum(mask))
@@ -36,6 +37,7 @@ def load_results(results_file, label=None, MAX_IOU=90, dataset=None, dataset_cla
     results_dict_per_click = {}
     results_dict_per_click_iou = {}
     all_data = {}
+    corrupted = 0
 
     with open(results_file, 'r') as f:
         for line in f:
@@ -57,12 +59,17 @@ def load_results(results_file, label=None, MAX_IOU=90, dataset=None, dataset_cla
                         num_objects += 1
                         ordered_clicks.append(float(num_clicks))
                 elif int(num_clicks) >= 20 and float(iou) >= 0:
-                    if obj_key not in results_dict_KatIOU:
-                        results_dict_KatIOU[obj_key] = float(num_clicks)
-                        num_objects += 1
-                        ordered_clicks.append(float(num_clicks))
+                
+                    if  float(iou) == 0 and dataset_name=="semKITTI":
+                        
+                        corrupted+=1 # no enough object instance points
+                    else:        
 
-
+                        if obj_key not in results_dict_KatIOU:
+                            results_dict_KatIOU[obj_key] = float(num_clicks)
+                            num_objects += 1
+                            ordered_clicks.append(float(num_clicks))
+                
                 results_dict_per_click.setdefault(num_clicks, 0)
                 results_dict_per_click_iou.setdefault(num_clicks, 0)
 
@@ -88,7 +95,7 @@ def load_results(results_file, label=None, MAX_IOU=90, dataset=None, dataset_cla
 if __name__ == '__main__':
 
 
-    datasets = ['s3dis'] # 'scannet' 's3dis','semKITTI'
+    datasets = ['scannet'] # 'scannet' 's3dis','semKITTI'
 
 
     if 'scannet' in datasets:
@@ -176,8 +183,20 @@ if __name__ == '__main__':
 
         print('s3dis')
 
-    for iou_max in [80, 85, 90]:
+        for iou_max in [80, 85, 90]:
 
             load_results(path + base_005_005, None, iou_max, dataset_s3dis, dataset_classes_s3dis,None)
 
+    elif "semKITTI" in datasets:
+        path = path = "./results/semanticKITTI/"
 
+        base_005_005 = 'semKITTI_baseline_all2_005_005_all_14.csv'
+        dataset_semKITTI = np.load('./results/semanticKITTI/dataset_01.npy')
+        dataset_classes_semKITTI = np.loadtxt(
+            './results/semanticKITTI/dataset_01_classes.txt', dtype=str)
+        print("SemanticKITTI")
+        for iou_max in [80, 85, 90]:
+            print('++++')
+            print('base')
+            print('005 to 005 - excluded unlabeled')
+            load_results(path + base_005_005, None, iou_max, dataset_semKITTI, dataset_classes_semKITTI,None,"semKITTI")
