@@ -24,6 +24,9 @@ Inference code with pre-trained model is available - training code is coming soo
 
 Toy dataset can be found on: /InterObject3D/Minkowski/training/mini_dataset/
 
+### ICRA 2023 Paper Data
+
+You can download the datasets used in the paper here: :https://drive.google.com/drive/folders/1B1uTY8Y8FeCyEfwlfZfivhcAFOOfUtPC?usp=sharing
 
 ### Pre-trained weights
 You can download the pretrained weights in:
