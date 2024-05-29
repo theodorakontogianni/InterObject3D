@@ -70,6 +70,67 @@ If needed adjust the results paths and run:
 python evaluation/compute_noc.py
 ```
 
+### Train model
+
+#### Prepare training data
+We trained our model on ScanNet-train (excluding some classes if needed for some experiments). However our setup requires adjusting it for binary (foreground/background) segmentation so every 3D scene for example with 20 objects is split into 20 scenes each one of them with a single object instance as foreground.
+
+Go to the following directory
+
+```
+cd InterObject3D/Minkowski/datasetgen/
+```
+If needed adjust the results paths and run for all scenes:
+
+```
+python main_scannet.py --name=<scene name>
+```
+This will result in a folder containing with the adjusted input data (scropped scenes around the object, binary gt, clicks for training)
+```
+└── results/
+    └── crops5x5
+      ├──scene0000_00
+      |   	├──scene0000_00_crop_0
+      |   	├──scene0000_00_crop_1
+      |   	├──.....
+      ├──scene0000_01
+      ├──.....
+    └── scans5x5
+      ├──scene0000_00
+      |   	├──scene0000_00_crop_0
+      |   	├──scene0000_00_crop_1
+      |   	├──.....
+      ├──scene0000_01
+      ├──.....
+```
+
+**Similar setups can be used for other training datasets**
+#### Run training
+
+Store a list of your training scenes + object ids in a numpy array in the examples folder:
+
+'examples/dataset_train.npy'
+```
+array([['scene0191_00', '0'],
+       ['scene0191_00', '1'],
+       ['scene0191_00', '2'],
+       ...,
+       ['scene0567_01', '18'],
+       ['scene0567_01', '19'],
+       ['scene0567_01', '20']], dtype='<U32')
+
+```
+
+Go to the following directory
+
+```
+cd InterObject3D/Minkowski/training/
+```
+If needed adjust the results paths and run:
+
+```
+python train.py
+```
 ## License
 Copyright (c) 2021 Theodora Kontogianni, ETH Zurich
 
