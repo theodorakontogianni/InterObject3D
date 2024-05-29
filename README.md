@@ -17,10 +17,8 @@ This repository provides code, data and pretrained models for:
 
 [[Paper](https://arxiv.org/abs/2204.07183)]
 
-## Code
-Inference code with pre-trained model is available - training code is coming soon
-
-### Toy Data
+### Training code now available!!!
+### Toy Data for Inference
 
 Toy dataset can be found on: /InterObject3D/Minkowski/training/mini_dataset/
 
