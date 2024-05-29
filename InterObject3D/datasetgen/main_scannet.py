@@ -12,9 +12,9 @@ import random
 import math
 
 FLAGS = flags.FLAGS
-flags.DEFINE_string('path', '/globalwork/kontogianni/scannet_official/scans/', 'Path to 3D scenes')
+flags.DEFINE_string('path', '/media/dora/Samsung_T5/intobjseg/datasets/scannet_official//scans/', 'Path to 3D scenes')
 flags.DEFINE_string('name', 'scene0000_00', 'Name of the scene.')
-flags.DEFINE_string('output_dir', '/globalwork/kontogianni/intobjseg/datasets/scannet_official/cubeedge_005/', 'Where to write generated scenes.')
+flags.DEFINE_string('output_dir', '/media/dora/Samsung_T5/intobjseg/datasets/scannet_official/results/', 'Where to write generated scenes.')
 
 def main(_):
 
@@ -29,7 +29,9 @@ def main(_):
         seg_to_verts, num_verts = read_segmentation(FLAGS.path + '/' + scene_name + '/' + scene_name +  '_vh_clean_2.0.010000.segs.json')
 
         #Path('/globalwork/celikkan/scannet_official/masks/' + scene_name).mkdir(parents=True, exist_ok=True)
-        Path(FLAGS.output_dir + scene_name).mkdir(parents=True, exist_ok=True)
+        Path(FLAGS.output_dir +'masks5x5/'+ scene_name).mkdir(parents=True, exist_ok=True)
+        Path(FLAGS.output_dir +'crops5x5/'+ scene_name).mkdir(parents=True, exist_ok=True)
+
 
         for i in range(len(object_id_to_segs)):
 
